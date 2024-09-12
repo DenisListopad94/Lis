@@ -9,4 +9,6 @@ from . import views
 
 urlpatterns = [
     path('main/', views.main, name='main'),
+    path('base/main/tasks/', views.task, name='task'),
+    path('base/main/tasks/users/', views.user, name='user'),
 ]
