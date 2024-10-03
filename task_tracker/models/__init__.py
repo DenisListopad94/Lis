@@ -1,2 +1,7 @@
 from .task import Task
-from .project import Projects
+from .tag import Tag
+from .attachment import Attachment
+from .project import Project
+from .comment import Comment
+
+
