@@ -1,2 +1,2 @@
 from .task import Task
-from .projects import Projects
+from .project import Projects
