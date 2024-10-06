@@ -15,25 +15,55 @@ PRIORITY_CHOICES=[
 ]
 
 class Task(BaseModel, models.Model):
-    title = models.CharField(max_length=64)
-    description = models.CharField(max_length=256)
-    status = models.CharField(choices=STATUS_CHOICES, max_length=2, null=True, blank=True)
-    priority = models.CharField(choices=PRIORITY_CHOICES, max_length=2, null=True, blank=True)
-    height_level = models.PositiveIntegerField(null=True, blank=True)
+    title = models.CharField(
+        max_length=64,
+        verbose_name = 'название'
+    )
+    description = models.CharField(
+        max_length=256,
+        verbose_name = 'описание'
+    )
+    status = models.CharField(
+        choices=STATUS_CHOICES,
+        max_length=2,
+        null=True,
+        blank=True,
+        verbose_name = 'статус'
+    )
+    priority = models.CharField(
+        choices=PRIORITY_CHOICES,
+        max_length=2,
+        null=True,
+        blank=True,
+        verbose_name = 'приоритет'
+    )
+    height_level = models.PositiveIntegerField(
+        null=True,
+        blank=True,
+        verbose_name = 'уровень'
+    )
     project = models.ForeignKey(
         to='Project',
         on_delete=models.CASCADE,
         related_name='tasks',
         null=True,
-        blank=True
+        blank=True,
+        verbose_name = 'проект'
     )
     user = models.ForeignKey(
         to=User,
         on_delete=models.CASCADE,
         related_name='tasks',
         null=True,
-        blank=True
+        blank=True,
+        verbose_name = 'пользователь'
+
     )
 
     def __str__(self):
         return self.title
+
+
+    class Meta:
+        verbose_name = 'задача'
+        verbose_name_plural = 'задача'

@@ -5,21 +5,29 @@ from base.models import BaseModel
 
 
 class Comment(BaseModel, models.Model):
-    title = models.CharField(max_length=64)
-    content = models.CharField(max_length=256)
+    title = models.CharField(
+        max_length=64,
+        verbose_name = 'название'
+    )
+    content = models.CharField(
+        max_length=256,
+        verbose_name = 'контент'
+    )
     task = models.ForeignKey(
         to='Task',
         on_delete=models.CASCADE,
         related_name='comments',
         null=True,
         blank=True,
+        verbose_name='задача'
     )
     user = models.ForeignKey(
         to=User,
         on_delete=models.CASCADE,
         related_name='comments',
         null=True,
-        blank=True
+        blank=True,
+        verbose_name='пользователь'
     )
 
 
@@ -29,3 +37,5 @@ class Comment(BaseModel, models.Model):
 
     class Meta:
         db_table = 'comment'
+        verbose_name = 'комментарий'
+        verbose_name_plural = 'комментарий'

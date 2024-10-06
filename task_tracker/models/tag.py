@@ -3,10 +3,14 @@ from base.models import BaseModel
 
 
 class Tag(BaseModel, models.Model):
-    name = models.CharField(max_length=64)
+    name = models.CharField(
+        max_length=64,
+        verbose_name = 'имя'
+    )
     tasks = models.ManyToManyField(
         to='Task',
-        related_name='tags'
+        related_name='tags',
+        verbose_name = 'задачи'
     )
 
 
@@ -16,3 +20,5 @@ class Tag(BaseModel, models.Model):
 
     class Meta:
         db_table = 'tag'
+        verbose_name = 'тэг'
+        verbose_name_plural = 'тэг'
