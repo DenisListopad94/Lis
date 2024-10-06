@@ -1,0 +1,48 @@
+{% extends '/home/andrey/tms_python/TaskTracker/base/templates/base.html' %}
+{% load cache %}
+
+
+
+{% block content %}
+
+     <h3>tasks </h3>
+
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">task</th>
+      <th scope="col">tag</th>
+      <th scope="col">comment</th>
+        <th scope="col">photo</th>
+    </tr>
+  </thead>
+  <tbody>
+    {%  for task in tasks  %}
+    <tr>
+      <th scope="row">{{task.id}}</th>
+      <td>{{task.title}}</td>
+        <td>
+            {% for tag in task.tags.all %}
+                <p>{{tag.name}}
+            {% endfor %}
+        </td>
+      <td>
+          {% for comment in task.comments.all %}
+                <p>{{comment.title}}
+            {% endfor %}
+      </td>
+       <td>
+           {% if task.photo %}
+                    <img style="max-height: 100px" src="{{ task.photo.url }}"/>
+            {% endif %}
+
+      </td>
+
+    </tr>
+
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

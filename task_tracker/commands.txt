@@ -1,7 +1,0 @@
-task_4: tasks = Task.objects.all()
-task_5: task = Task.objects.filter(priority='h')
-task_6: task = Task.objects.filter(priority='m').exclude(status__exact='')
-task_7: task = Task.objects.filter(title__startswith='create')
-task_8: task = Task.objects.get(id=5)
-        task.status = 'cl'
-        task.save()
