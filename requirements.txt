@@ -6,3 +6,5 @@ django-extensions==3.2.3
 ipython==8.27.0
 django-debug-toolbar==4.4.6
 pillow==10.4.0
+django-crispy-forms==2.3
+crispy-bootstrap5==2024.10

@@ -13,6 +13,18 @@ class Comment(BaseModel, models.Model):
         max_length=256,
         verbose_name = 'контент'
     )
+    photo = models.ImageField(
+        upload_to='comments',
+        null=True,
+        blank=True,
+        verbose_name='фото'
+    )
+    specs = models.FileField(
+        upload_to='Downloads',
+        null=True,
+        blank=True,
+        verbose_name='файл'
+    )
     task = models.ForeignKey(
         to='Task',
         on_delete=models.CASCADE,

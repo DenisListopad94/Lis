@@ -1,5 +1,6 @@
 from django.contrib import admin
 from task_tracker.models import Attachment, Comment, Project, Tag, Task
+from django.utils.safestring import mark_safe
 
 class CommentInline(admin.TabularInline):
     model = Comment
@@ -17,7 +18,10 @@ class TagMembershipInline(admin.TabularInline):
     model = Tag.tasks.through
 
 
-
+@admin.display(description='фото')
+def get_html_photo(object):
+    if object.photo:
+        return mark_safe(f'<img src={object.photo.url} width=50>')
 
 
 @admin.register(Attachment)
@@ -28,7 +32,7 @@ class AttachmentAdmin(admin.ModelAdmin):
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ['id', 'title', 'content', 'task', 'user']
+    list_display = ['id', 'title', 'content', 'task', 'user', get_html_photo, 'specs']
     list_display_links = ['title', 'task']
     ordering = ['task', 'user']
     search_fields = ['content', 'id']
