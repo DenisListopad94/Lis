@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'crispy_forms',
     'crispy_bootstrap5',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -162,3 +163,9 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 MEDIA_ROOT = '/home/andrey/ab'
 MEDIA_URL = 'media/'
+
+# REST_FRAMEWORK = {
+#     'DEFAULT_PERMISSION_CLASSES': [
+#         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+#     ]
+# }

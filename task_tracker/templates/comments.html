@@ -26,12 +26,7 @@
       <td>{{comment.user}}</td>
       <td>
         {% if comment.photo %}
-                <img style="max-height: 100px" src="{{ comment.photo.url }}"/>
-        {% endif %}
-      </td>
-      <td>
-        {% if comment.photo %}
-                <img style="max-height: 10px" src="{{ comment.photo.url }}"/>
+                <img style="max-height: 40px" src="{{ comment.photo.url }}"/>
         {% endif %}
       </td>
     </tr>
