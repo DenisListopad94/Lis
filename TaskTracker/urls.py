@@ -16,12 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from base import views
+from base.views import views
+from debug_toolbar.toolbar import debug_toolbar_urls
 
 
 urlpatterns = [
-    path('base/', include('base.urls')),
-    path('base/main/tasks/', views.task),
-    path('base/main/tasks/users/', views.user),
     path('admin/', admin.site.urls),
-]
+    path('api/v1/', include('api.urls')),
+    path('tasks/', include('task_tracker.urls')),
+    path('', include('base.urls')),
+    # path('base/main/tasks/', views.task),
+    path('base/main/tasks/users/', views.users),
+]+ debug_toolbar_urls()

@@ -37,7 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
+    'api',
+    'api.users_api',
     'base',
+    'custom_user',
     'task_tracker',
     'django_extensions',
 ]
@@ -48,6 +52,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
@@ -79,7 +84,7 @@ WSGI_APPLICATION = 'TaskTracker.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'tasktracker',
+        'NAME': 'tasktrackers',
         'HOST': 'localhost',
         'USER': 'andrey',
         'PASSWORD': 1234,
@@ -87,6 +92,9 @@ DATABASES = {
 
     }
 }
+
+
+AUTH_USER_MODEL = 'custom_user.User'
 
 
 # Password validation
@@ -129,3 +137,19 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.db.DatabaseCache",
+        "LOCATION": "my_cache_table",
+    },
+    "qwe": {
+            "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
+            "LOCATION": "/var/tmp/django_cache",
+    }
+}

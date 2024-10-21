@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load cache %}
 {% load static %}
 <html lang="en">
 <head>
@@ -9,19 +10,23 @@
 <body>
     <h1>{{ header }}</h1>
     <p>Имя: {{ users.name }}</p>
-    <img src="{% static "0ebd262c4b7f69f7ec915dbd8509328f.jpg" %}">
+    {% cache 60 * 20 qwe  ...  using="qwe" %}
+    <img src="{% static '0ebd262c4b7f69f7ec915dbd8509328f.jpg' %}">
+    {% endcache %}
     <p>Возраст: {{ users.age }}</p>
     <p>Телефон: {{ users.phone }}</p>
     <br>Имя: {{ users.name1 }}<br>
-    <img src="{% static "2af53d8f1be483dd0e05b7b18142c33c.jpg" %}">
+    <img src="{% static '2af53d8f1be483dd0e05b7b18142c33c.jpg' %}">
     <p>Возраст: {{ users.age1 }}</p>
     <p>Телефон: {{ users.phone1 }}</p>
     <br>Имя: {{ users.name2 }}<br>
-    <img src="{% static "images.jpeg" %}">
+    <img src="{% static 'images.jpeg' %}">
     <p>Возраст: {{ users.age2 }}</p>
     <p>Телефон: {{ users.phone2 }}</p>
     <br>Имя: {{ users.name3 }}<br>
-    <img src="{% static "24152197af38deb718eb730992d441d0.jpg" %}">
+    {% cache 60 * 20 ewq  ...  using="qwe" %}
+    <img src="{% static '24152197af38deb718eb730992d441d0.jpg' %}">
+    {% endcache %}
     <p>Возраст: {{ users.age3 }}</p>
     <p>Телефон: {{ users.phone3 }}</p>
 </body>
