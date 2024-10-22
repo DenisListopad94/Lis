@@ -2,9 +2,11 @@ from django.shortcuts import render,redirect
 from task_tracker.models import Comment
 from task_tracker.forms.comment_form import CommentModelForm
 from django.views.generic.list import ListView
+from django.contrib.auth.mixins import PermissionRequiredMixin
 
 
-class CommentsTemplateView(ListView):
+class CommentsTemplateView(PermissionRequiredMixin, ListView):
+    permission_required = ['task_tracker.view_comment']
     template_name = 'comments.html'
     model = Comment
 

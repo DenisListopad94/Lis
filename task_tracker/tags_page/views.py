@@ -1,8 +1,9 @@
 from task_tracker.models import Tag
 from django.views.generic.base import TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class TagsTemplateView(TemplateView):
+class TagsTemplateView(LoginRequiredMixin, TemplateView):
     template_name = 'tags.html'
 
     def get_context_data(self, **kwargs):

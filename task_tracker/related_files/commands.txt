@@ -14,3 +14,19 @@ task_10: user = User.objects.filter(age__gt = 30)
          user = User.objects.exclude(locale__isnull=False)
          user = User.objects.filter(age__gt = 30).exclude(locale__isnull=False)
 task_11: comment = Comment.objects.filter(user=1).filter(user=4).filter(user=11)
+
+
+auth and permission
+user = User.objects.create_user('user', password='1')
+user.is_superuser=True
+user.is_staff=True
+user.save()
+group = Group.objects.get_or_create(name='group')
+groups = Group.objects.get(name='group')
+groups.user_set.add(user)
+user.groups.add(groups)
+from rest_framework.authtoken.models import Token
+user = User.objects.get(id=1)
+token=Token.objects.create(user=user)
+./manage.py drf_create_token 1111 #на уроке мы пробовали эту команду, работает если просто телефон написать без ""
+Generated token b75791ca8985ab75e714f5ba6 for user 1111

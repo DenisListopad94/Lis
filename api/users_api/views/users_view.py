@@ -19,8 +19,17 @@ def user_list(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+# @api_view(['GET'])
+# def user_detail(request, pk):
+#     user = User.objects.get(pk=pk)
+#     if request.method == 'GET':
+#         serializer = UserSerializer(user)
+#         return Response(serializer.data)
+
+
 @api_view(['GET'])
 def user_detail(request, pk):
+    user = User.objects.all()
     user = User.objects.get(pk=pk)
     if request.method == 'GET':
         serializer = UserSerializer(user)
