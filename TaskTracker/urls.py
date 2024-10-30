@@ -18,13 +18,20 @@ from django.contrib import admin
 from django.urls import include, path
 from base.views import views
 from debug_toolbar.toolbar import debug_toolbar_urls
+from django.conf.urls.static import static
+from TaskTracker import settings
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include('api.urls')),
     path('tasks/', include('task_tracker.urls')),
+    # path('comments/', include('task_tracker.urls')),
+    path('tags/', include('task_tracker.tags_page.urls')),
     path('', include('base.urls')),
     # path('base/main/tasks/', views.task),
     path('base/main/tasks/users/', views.users),
+    path('api-auth/', include('rest_framework.urls')),
 ]+ debug_toolbar_urls()
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

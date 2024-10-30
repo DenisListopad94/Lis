@@ -65,5 +65,6 @@ class Task(BaseModel, models.Model):
 
 
     class Meta:
+        db_table = 'task'
         verbose_name = 'задача'
         verbose_name_plural = 'задача'

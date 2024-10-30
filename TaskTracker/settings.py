@@ -44,6 +44,10 @@ INSTALLED_APPS = [
     'custom_user',
     'task_tracker',
     'django_extensions',
+    'crispy_forms',
+    'crispy_bootstrap5',
+    'rest_framework',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -152,4 +156,22 @@ CACHES = {
             "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
             "LOCATION": "/var/tmp/django_cache",
     }
+}
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+MEDIA_ROOT = '/home/andrey/ab'
+MEDIA_URL = 'media/'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        # 'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication'
+    ]
 }
