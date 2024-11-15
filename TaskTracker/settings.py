@@ -94,7 +94,7 @@ DATABASES = {
         'PASSWORD': 1234,
         'PORT': '5432',
         'TEST':{
-            'NAME': os.environ.get('DB_TEST_NAME', 'task_tracker_test'),
+            'NAME':'task_tracker_test',
         }
 
     }
